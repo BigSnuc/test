@@ -33,7 +33,7 @@ def appearance(intervals):
                 start = -1
         print(elapsedtime)
 
-
+# Не могу найти решение чтоб пройти 2 тест
 
 tests = [
     {'data': {'lesson': [1594663200, 1594666800],
