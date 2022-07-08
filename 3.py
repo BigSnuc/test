@@ -5,31 +5,20 @@ def appearance(intervals):
         real_interval = interval['data']
         for k in real_interval:
             ev = real_interval[k]
-            for u in range(len(ev)):
+            for u in range(0, len(ev)-11, 2):
                 for z in range(0, len(ev) - 3, 2):
                     if ev[z] <= ev[z+2] and ev[z+2] <= ev[z+1]:
                         ev.pop(z + 1)
                         ev.pop(z + 1)
                         break
-                    if ev[z + 1] >= ev[z+3] and ev[z] <= ev[z+3]:
-                        ev.pop(z + 3)
+                    if ev[u] < ev[z] and ev[u+1] > ev[z] and u != z:
+                        ev.pop(u + 1)
                         ev.pop(z)
                         break
-                    if ev[z+2] <= ev[z] and ev[z + 1] >= ev[z+3]:
-                        ev.pop(z + 2)
-                        ev.pop(z + 2)
-                        break
-                    if ev[z+2] <= ev[z] and ev[z + 1] <= ev[z+3]:
-                        ev.pop(z)
-                        ev.pop(z)
-                        break
-                    if ev[z] == ev[z+1]:
-                        ev.pop(z)
-                        ev.pop(z)
-                        break
+
             print(ev)
             for z in range(len(ev)):
-                events.append((ev[z], 1 - 2 * (z % 2))) # +-1 для чётного и нечетного индекса
+                events.append((ev[z], 1 - 2 * (z % 2)))
         events.sort()
         cnt = 0
         start = -1
@@ -43,6 +32,7 @@ def appearance(intervals):
                 elapsedtime += e[0] - start
                 start = -1
         print(elapsedtime)
+
 
 
 tests = [
