@@ -5,17 +5,14 @@ def appearance(intervals):
         real_interval = interval['data']
         for k in real_interval:
             ev = real_interval[k]
-            for u in range(0, len(ev)-11, 2):
+            for u in range(0, len(ev), 2):
                 for z in range(0, len(ev) - 3, 2):
                     if ev[z] <= ev[z+2] and ev[z+2] <= ev[z+1]:
                         ev.pop(z + 1)
                         ev.pop(z + 1)
                         break
-                    if ev[u] < ev[z] and ev[u+1] > ev[z] and u != z:
-                        ev.pop(u + 1)
-                        ev.pop(z)
-                        break
-
+                        # Смысл цикла выше соединить все пересекающиеся интервалы в один большой интервал
+                        # Пока не придумал как это реализовать
             print(ev)
             for z in range(len(ev)):
                 events.append((ev[z], 1 - 2 * (z % 2)))
