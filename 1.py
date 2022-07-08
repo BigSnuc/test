@@ -1,11 +1,7 @@
-
 def task(array):
-    count = 0
-    for char in array:
-        if (array[count]) == "0":
-            return count
-        else:
-            count += 1
+    for i in range(len(array)):
+        if (array[i]) == "0":
+            return i
 
 
 print(task("111111111110000000000000000"))
